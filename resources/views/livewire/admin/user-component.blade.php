@@ -35,8 +35,9 @@
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Categoria
                             </th>
-                            <th scope="col" class="relative px-6 py-3">
-                                <span class="sr-only">Editar</span>
+                            <th scope="col" class="flex item-center px-6 py-3">
+                                <i class="fa-solid fa-user-tie"></i>
+                                <span class="mx-2" >Editar</span>
                             </th>
                         </tr>
                     </thead>
@@ -74,7 +75,7 @@
 
                                     </div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <td class="flex items-center px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     
                                     <label>
                                         <input {{count($user->roles) ? 'checked' : ''}} value="1" type="radio" name="{{$user->email}}" wire:change="assignRole({{$user->id}}, $event.target.value)">
@@ -89,7 +90,6 @@
                             </tr>
 
                         @endforeach
-                        <!-- More people... -->
 
                         
                     </tbody>

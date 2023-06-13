@@ -8,8 +8,8 @@ use App\Http\Livewire\Admin\EditProduct;
 
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\InvoiceController;
-
 use App\Http\Controllers\Admin\CategoryController;
+
 use App\Http\Livewire\Admin\ShowCategory;
 
 use App\Http\Livewire\Admin\BrandComponent;

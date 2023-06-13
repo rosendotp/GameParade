@@ -1,13 +1,13 @@
 <div class="container py-12">
-    {{-- Agregar departamento --}}
+    {{-- Agregar tienda --}}
     <x-form-section submit="save" class="mb-6">
 
         <x-slot name="title">
-            Agregar un nuevo departamento
+            Agregar un nueva Tienda
         </x-slot>
 
         <x-slot name="description">
-            Complete la información necesaria para poder agregar un nuevo departamento
+            Complete la información necesaria para poder agregar una nueva tienda 
         </x-slot>
 
         <x-slot name="form">
@@ -25,7 +25,7 @@
         <x-slot name="actions">
 
             <x-action-message class="mr-3" on="saved">
-                Departamento agregado
+                Tienda agregada
             </x-action-message>
 
             <x-button>
@@ -34,14 +34,14 @@
         </x-slot>
     </x-form-section>
 
-    {{-- Mostrar Departamentos --}}
+    {{-- Mostrar Tiendas --}}
     <x-action-section>
         <x-slot name="title">
-            Lista de Departamentos
+            Lista de Tiendas
         </x-slot>
 
         <x-slot name="description">
-            Aquí encontrará todas los departamentos agregados
+            Aquí encontrará todas los tiendas agregadas
         </x-slot>
 
         <x-slot name="content">
@@ -81,7 +81,7 @@
     <x-dialog-modal wire:model="editForm.open">
 
         <x-slot name="title">
-            Editar departamento
+            Editar tienda
         </x-slot>
 
         <x-slot name="content">
@@ -115,21 +115,21 @@
             Livewire.on('deleteDepartment', departmentId => {
             
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
+                    title: 'Estás seguro ?',
+                    text: "No podrás recuperar este registro! ",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Borrar'
                 }).then((result) => {
                     if (result.isConfirmed) {
 
                         Livewire.emitTo('admin.department-component', 'delete', departmentId)
 
-                        Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
+                        Swal.fire(                                        
+                            'Borrado!',
+                            'Tu registro ha sido borrado',
                             'success'
                         )
                     }

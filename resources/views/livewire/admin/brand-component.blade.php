@@ -96,21 +96,21 @@
             Livewire.on('deleteBrand', brandId => {
             
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
+                    title: '¿ Estas seguro de que desea eliminar registro?',
+                    text: "No podrás recuperar los datos una vez borrado",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Borrar'
                 }).then((result) => {
                     if (result.isConfirmed) {
 
                         Livewire.emitTo('admin.brand-component', 'delete', brandId)
 
                         Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
+                            'Borrado',
+                            'Registro borrado.',
                             'success'
                         )
                     }

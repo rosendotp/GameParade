@@ -9,7 +9,7 @@ class PlatformProduct extends Model
 {
     use HasFactory;
     protected $table = "platform_product";
-   
+    
 public function platform(){
         return $this->belongsTo(Platform::class);
     }

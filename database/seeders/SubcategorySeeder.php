@@ -42,12 +42,12 @@ class SubcategorySeeder extends Seeder
             ],
             [
                 'category_id' => 3,
-                'name' => 'poster',
+                'name' => 'Poster',
                 'slug' => Str::slug('poster')
             ],
             [
                 'category_id' => 3,
-                'name' => 'figuras',
+                'name' => 'Figuras',
                 'slug' => Str::slug('figuras')
             ],
         ];

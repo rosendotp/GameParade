@@ -1,12 +1,12 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight capitalize">
-            Departamento: {{$department->name}}
+            Tienda : {{$department->name}}
         </h2>
     </x-slot>
 
     <div class="container py-12">
-        {{-- Agregar departamento --}}
+        {{-- Agregar tienda --}}
         <x-form-section submit="save" class="mb-6">
     
             <x-slot name="title">

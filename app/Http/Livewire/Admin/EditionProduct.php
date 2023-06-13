@@ -70,6 +70,6 @@ class EditionProduct extends Component
         $editions = $this->product->editions;
 
         
-        return view('livewire.admin.edition-product', compact('editions'));
+        return view('livewire.admin.edition-product',['editions'=>$editions]);
     }
 }

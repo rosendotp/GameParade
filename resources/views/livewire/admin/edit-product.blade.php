@@ -6,13 +6,21 @@
                 <h1 class="font-semibold text-xl text-gray-800 leading-tight">
                     Productos
                 </h1>
-
-                <x-danger-button wire:click="$emit('deleteProduct')">
-                    Eliminar
-                </x-danger-button>
+    
+                <div class="flex">
+                    <a class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md mr-4" href="{{route('admin.index')}}">
+                        <i class="fas fa-arrow-left mr-2"></i> Volver
+                    </a>
+    
+                    <x-danger-button wire:click="$emit('deleteProduct')">
+                        Eliminar
+                    </x-danger-button>
+                </div>
             </div>
         </div>
     </header>
+    
+    
 
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
 
@@ -49,10 +57,6 @@
 
 
         @livewire('admin.status-product', ['product' => $product], key('status-product-' . $product->id))
-
-        {{-- <div class="bg-white shadow-xl rounded-lg p-6">
-
-        </div> --}}
 
         <div class="bg-white shadow-xl rounded-lg p-6">
             <div class="grid grid-cols-2 gap-6 mb-4">
@@ -147,7 +151,7 @@
             @if ($this->subcategory)
 
 
-                @if (!$this->subcategory->platform && !$this->subcategory->edition)
+            @if (!$this->subcategory->platform && !$this->subcategory->edition)
 
                     <div>
                         <x-label value="Cantidad" />
@@ -237,21 +241,21 @@
             Livewire.on('deleteEdition', editionId => {
 
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
+                    title: 'Estás seguro ?',
+                    text: "No podrás recuperar este registro! ",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Borrar'
                 }).then((result) => {
                     if (result.isConfirmed) {
 
                         Livewire.emitTo('admin.edition-product', 'delete', editionId);
 
                         Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
+                            'Borrado',
+                            'Tu registro ha sido borrado.',
                             'success'
                         )
                     }
@@ -261,44 +265,44 @@
 
             Livewire.on('deletePivot', pivot => {
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
+                    title: 'Estás seguro ?',
+                    text: "No podrás recuperar este registro! ",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Borrar'
                 }).then((result) => {
                     if (result.isConfirmed) {
 
                         Livewire.emitTo('admin.platform-product', 'delete', pivot);
 
                         Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
+                            'Borrado',
+                            'Tu registro ha sido borrado.',
                             'success'
                         )
                     }
                 })
             })
 
-            Livewire.on('deleteColorSize', pivot => {
+            Livewire.on('deleteEditionPlatform', pivot => {
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
+                    title: 'Estás seguro ?',
+                    text: "No podrás recuperar este registro! ",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Borrar'
                 }).then((result) => {
                     if (result.isConfirmed) {
 
                         Livewire.emitTo('admin.edition-platform', 'delete', pivot);
 
                         Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
+                            'Borrado',
+                            'Tu registro ha sido borrado.',
                             'success'
                         )
                     }

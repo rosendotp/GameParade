@@ -7,6 +7,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WebhooksController;
+use App\Http\Controllers\ReviewController;
+
 use App\Http\Livewire\ShoppingCart;
 use App\Http\Livewire\CreateInvoice;
 
@@ -25,6 +27,8 @@ Route::get('categories/{category}', [CategoryController::class, 'show'])->name('
 Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
 
 Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
+
+Route::match(['get', 'post'], 'reviews/{product}', [ReviewController::class, 'store'])->name('reviews.store');
 
 Route::middleware(['auth'])->group(function(){
 

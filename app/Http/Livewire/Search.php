@@ -23,17 +23,16 @@ class Search extends Component
     public function render()
     {
 
-        //Tv de 32" Full HD
 
         if ($this->search) {
             $products = Product::where('name', 'LIKE' ,'%' . $this->search . '%')
-                                ->where('status', 2)
+                                ->where('status', 0)
                                 ->take(8)
                                 ->get();
         } else {
             $products = [];
         }
         
-        return view('livewire.search', compact('products'));
+        return view('livewire.search',['products'=> $products]);
     }
 }

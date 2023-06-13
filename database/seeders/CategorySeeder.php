@@ -21,27 +21,27 @@ class CategorySeeder extends Seeder
             [
                 'name' => 'Consolas y Accesorios',
                 'slug' => Str::slug('consolas'),
-                'icon' => '<i class="fa-game-console-handheld-crank"></i>'
+                'icon' => '<i class="fas fa-gamepad"></i>'
             ],
             [
                 'name' => 'Videojuegos',
                 'slug' => Str::slug('Videojuegos'),
-                'icon' => '<i class="fas fa-gamepad"></i>'
+                'icon' => '<i class="fa-brands fa-space-awesome"></i>'
             ],
             [
                 'name' => 'Merchandising',
                 'slug' => Str::slug('Merchandising'),
-                'icon' =>'<i class="fas fa-tshirt"></i>'
+                'icon' => '<i class="fas fa-tshirt"></i>'
             ],
         ];
 
-        foreach ($categories as $category){
-            $category = Category::factory(1)-> create($category)->first();
+        foreach ($categories as $category) {
+            $category = Category::factory(1)->create($category)->first();
 
             $brands = Brand::factory(4)->create();
-            
-            foreach($brands as $brand){
-                $brand->categories()->attach($category ->id);
+
+            foreach ($brands as $brand) {
+                $brand->categories()->attach($category->id);
             }
         }
     }

@@ -2,13 +2,11 @@
 
 namespace App\Http\Livewire\Admin;
 
+use Livewire\Component;
 use App\Models\Platform;
-use App\Models\Edition;
-use App\Models\Product;
 
 use App\Models\EditionPlatform as Pivot;
 
-use Livewire\Component;
 
 class EditionPlatform extends Component
 {
@@ -93,7 +91,7 @@ class EditionPlatform extends Component
 
         $edition_platforms = $this->edition->platforms;
 
-        return view('livewire.admin.edition-platform', compact('edition_platforms'));
+        return view('livewire.admin.edition-platform',['edition_platforms'=>$edition_platforms]);
     }
 
 }

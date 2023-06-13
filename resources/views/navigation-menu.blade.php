@@ -16,7 +16,6 @@
                         Productos
                     </x-nav-link>
 
-
                     <x-nav-link href="{{route('admin.invoices.index')}}" :active="request()->routeIs('admin.invoices.*')">
                         Factura
                     </x-nav-link>
@@ -30,7 +29,7 @@
                     </x-nav-link>
 
                     <x-nav-link href="{{route('admin.departments.index')}}" :active="request()->routeIs('admin.departments.index')">
-                        Departamentos
+                        Tiendas
                     </x-nav-link>
 
                     <x-nav-link href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.index')">

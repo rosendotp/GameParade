@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+
 use App\Models\Town;
 use App\Models\Department;
 use App\Models\Street;
@@ -32,7 +33,7 @@ class CreateInvoice extends Component
     public function updatedEnvioType($value){
         if ($value == 1) {
             $this->resetValidation([
-                'department_id', 'town_id','street:id', 'address', 'references'
+                'department_id', 'town_id','street_id', 'address', 'references'
             ]);
         }
     }
@@ -83,7 +84,7 @@ class CreateInvoice extends Component
             $invoice->envio = json_encode([
                 'department' => Department::find($this->department_id)->name,
                 'town' => Town::find($this->town_id)->name,
-                'street' => Town::find($this->street_id)->name,
+                'street' => Street::find($this->street_id)->name,
                 'address' => $this->address,
                 'references' => $this->references
             ]);

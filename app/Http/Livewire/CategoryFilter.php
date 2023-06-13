@@ -36,9 +36,6 @@ class CategoryFilter extends Component
     public function render()
     {
 
-        /* $products = $this->category->products()
-                            ->where('status', 2)->paginate(20); */
-
         $productsQuery = Product::query()->whereHas('subcategory.category', function(Builder $query){
             $query->where('id', $this->category->id);
         });

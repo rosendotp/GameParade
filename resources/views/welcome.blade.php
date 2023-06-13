@@ -3,11 +3,9 @@
         @foreach ($categories as $category)
             <section class="mb-6">
                 <div class="flex items-center mb-2">
-                    <h1 class="text-lg uppercase font-semibold text-gray-700">
-                        {{$category->name}}
-                    </h1>
-
-                    <a href="{{route('categories.show', $category)}}" class="text-orange-500 hover:text-orange-400 hover:underline ml-2 font-semibold">Ver más</a>
+                    <h1 class="mb-4 text-xl font-extrabold text-gray-900 dark:text-white md:text-xl lg:text-xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">{{$category->name}}</span> </h1>
+                    </h1>                    
+                    <a href="{{route('categories.show', $category)}}" class=" mb-2 text-blue-300 hover:text-blue-400 hover:underline ml-2 font-bold">Ver más</a>
 
                 </div>
 

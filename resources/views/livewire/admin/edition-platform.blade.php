@@ -1,8 +1,6 @@
 <div class="mt-4">
     <div class="bg-gray-100 shadow-lg rounded-lg p-6">
 
-
-        {{-- Color --}}
         <div class="mb-6">
             <x-label>
                 Plataforma
@@ -82,7 +80,7 @@
                                 </x-secondary-button>
 
                                 <x-danger-button
-                                    wire:click="$emit('deletePlaformEdition', {{ $edition_platform->pivot->id }})">
+                                    wire:click="$emit('deleteEditionPlatform', {{ $edition_platform->pivot->id }})">
                                     Eliminar
                                 </x-danger-button>
                             </td>

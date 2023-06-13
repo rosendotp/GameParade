@@ -48,8 +48,9 @@
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Precio
                             </th>
-                            <th scope="col" class="relative px-6 py-3">
-                                <span class="sr-only">Editar</span>
+                            <th scope="col" class="flex items-center px-6 py-3">
+                                <i class="fa-solid fa-shop"></i>
+                                <span class="mx-2">Editar</span>
                             </th>
                         </tr>
                     </thead>
@@ -66,7 +67,7 @@
                                                     src="{{ Storage::url($product->images->first()->url) }}" alt="">
                                             @else
                                                 <img class="h-10 w-10 rounded-full object-cover"
-                                                    src="https://images.pexels.com/photos/4883800/pexels-photo-4883800.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                                                    src="https://images.pexels.com/photos/3801990/pexels-photo-3801990.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
                                             @endif
                                         </div>
                                         <div class="ml-4">
@@ -88,10 +89,10 @@
                                         @case(1)
                                             <span
                                                 class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                                                Borrador
+                                                Descatalogado
                                             </span>
                                         @break
-                                        @case(2)
+                                        @case(0)
                                             <span
                                                 class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                                 Publicado
@@ -105,7 +106,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{$product->price}} €
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <td class="flex items-center px-11 py-6  whitespace-nowrap text-right text-sm font-medium">
                                     <a href="{{ route('admin.products.edit', $product) }}" class="text-indigo-600 hover:text-indigo-900">Editar</a>
                                 </td>
                             </tr>

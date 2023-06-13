@@ -23,6 +23,6 @@ class ShowProducts extends Component
 
         $products = Product::where('name', 'like', '%' . $this->search . '%')->paginate(10);
 
-        return view('livewire.admin.show-products', compact('products'))->layout('layouts.admin');
+        return view('livewire.admin.show-products',['products'=>$products])->layout('layouts.admin');
     }
 }

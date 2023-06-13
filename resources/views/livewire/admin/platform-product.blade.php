@@ -48,7 +48,7 @@
 
     </div>
 
-    @if ($edition_platforms->count())
+    @if ($product_platforms->count())
         
         <div class="mt-8">
             <table>
@@ -66,23 +66,23 @@
                 </thead>
 
                 <tbody>
-                    @foreach ($edition_platforms as $edition_platform)
-                        <tr wire:key="edition_platform-{{ $edition_platform->pivot->id }}">
+                    @foreach ($product_platforms as $product_platform)
+                        <tr wire:key="product_platform-{{ $product_platform->pivot->id }}">
                             <td class="capitalize px-4 py-2">
-                                {{ __($platforms->find($edition_platform->pivot->color_id)->name) }}
+                                {{ __($platforms->find($product_platform->pivot->platform_id)->name) }}
                             </td>
                             <td class="px-4 py-2">
-                                {{ $edition_platform->pivot->quantity }} unidades
+                                {{ $product_platform->pivot->quantity }} unidades
                             </td>
                             <td class="px-4 py-2 flex">
                                 <x-secondary-button class="ml-auto mr-2"
-                                    wire:click="edit({{ $edition_platform->pivot->id }})" wire:loading.attr="disabled"
-                                    wire:target="edit({{ $edition_platform->pivot->id }})">
+                                    wire:click="edit({{ $product_platform->pivot->id }})" wire:loading.attr="disabled"
+                                    wire:target="edit({{ $product_platform->pivot->id }})">
                                     Actualizar
                                 </x-secondary-button>
 
                                 <x-danger-button
-                                    wire:click="$emit('deleteEditionPlatform', {{ $edition_platform->pivot->id }})">
+                                    wire:click="$emit('deletePivot', {{ $product_platform->pivot->id }})">
                                     Eliminar
                                 </x-danger-button>
                             </td>
@@ -94,7 +94,7 @@
 
     @endif
 
-    <x-dialog-modal wire:model="open" wire:key="modal-edition-product-{{$edition->id}}">
+    <x-dialog-modal wire:model="open">
 
         <x-slot name="title">
             Editar plataforma
@@ -106,7 +106,7 @@
                     Plataforma
                 </x-label>
 
-                <select class="form-control w-full" wire:model="pivot_color_id">
+                <select class="form-control w-full" wire:model="pivot_platform_id">
                     <option value="">Seleccione una plataforma</option>
                     @foreach ($platforms as $platform)
                         <option value="{{ $platform->id }}">{{ ucfirst(__($platform->name)) }}</option>

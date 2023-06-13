@@ -31,65 +31,6 @@
                 <tbody class="bg-white divide-y divide-gray-200">
 
                     @foreach (Cart::content() as $item)
-                        
-                        {{-- <tr>
-                            <td>
-                                <div class="flex">
-                                    <img class="h-15 w-20 object-cover mr-4" src="{{ $item->options->image }}" alt="">
-                                    <div>
-                                        <p class="font-bold">{{$item->name}}</p>
-
-                                        @if ($item->options->color)
-                                            <span>
-                                                Plataforma: {{ __($item->options->platform) }}
-                                            </span>    
-                                        @endif
-
-                                        @if ($item->options->edition)
-
-                                            <span class="mx-1">-</span>
-
-                                            <span>
-                                                {{ $item->options->edition }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td class="text-center">
-                                <span>{{ $item->price }} €</span>
-                                <a class="ml-6 cursor-pointer hover:text-red-600"
-                                    wire:click="delete('{{$item->rowId}}')"
-                                    wire:loading.class="text-red-600 opacity-25"
-                                    wire:target="delete('{{$item->rowId}}')">
-                                    <i class="fas fa-trash"></i>  
-                                </a>
-                            </td>
-
-                            <td>
-                                <div class="flex justify-center">
-                                    @if ($item->options->edition)
-
-                                        @livewire('update-cart-item-edition', ['rowId' => $item->rowId], key($item->rowId))
-
-                                    @elseif($item->options->platform)
-
-                                        @livewire('update-cart-item-platform', ['rowId' => $item->rowId], key($item->rowId))
-                                        
-                                    @else
-
-                                        @livewire('update-cart-item', ['rowId' => $item->rowId], key($item->rowId))
-
-                                    @endif
-                                </div>
-                            </td>
-
-                            <td class="text-center">
-                                {{$item->price * $item->qty}} €
-                            </td>
-                        </tr> --}}
-
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
@@ -122,7 +63,6 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                         
                                 <div class="text-sm text-gray-500">
                                     <span>{{ $item->price }} €</span>
                                     <a class="ml-6 cursor-pointer hover:text-red-600"
@@ -183,7 +123,6 @@
 
     </x-table-responsive>
 
-    <!-- This example requires Tailwind CSS v2.0+ -->
 
 
 
@@ -198,11 +137,20 @@
                     </p>
                 </div>
 
-                <div>
-                    <x-button-enlace href="{{ route('invoices.create') }}">
+                <div x-data="{ showParagraph: false }" class="flex">
+                    @guest
+                    <p x-show="showParagraph" class="p-2">
+                        Debes iniciar sesión o registrarte antes de continuar
+                    </p>
+                    @endguest
+                    
+                    <a x-bind:href="'{{ route('invoices.create') }}'" x-on:mouseenter="showParagraph = true" x-on:mouseleave="showParagraph = false" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Continuar
-                    </x-button-enlace>
+                    </a>
+                    
                 </div>
+                
+                
             </div>
         </div>
 

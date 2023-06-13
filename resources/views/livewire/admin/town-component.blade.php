@@ -119,7 +119,7 @@
 
     @push('script')
         <script>
-            Livewire.on('deleteDistrict', streetId => {
+            Livewire.on('deleteStreet', streetId => {
             
                 Swal.fire({
                     title: '¿Estás seguro?',

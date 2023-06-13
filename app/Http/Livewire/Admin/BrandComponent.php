@@ -67,8 +67,15 @@ class BrandComponent extends Component
     }
 
     public function delete(Brand $brand){
-        $brand->delete();
-        $this->getBrands();
+        $products = $brand->products;
+
+    foreach ($products as $product) {
+        $product->delete();
+    }
+
+    $brand->delete();
+
+    $this->getBrands();
     }
 
     public function render()

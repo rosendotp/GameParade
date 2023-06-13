@@ -5,19 +5,17 @@
             <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6">
                 <p class="text-gray-700 uppercase"><span class="font-semibold">Número de factura:</span>
                     Factura-{{ $invoice->id }}</p>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            
                 <div class="grid grid-cols-2 gap-6 text-gray-700">
                     <div>
                         <p class="text-lg font-semibold uppercase">Envío</p>
 
                         @if ($invoice->envio_type == 1)
-                            <p class="text-sm">Los productos deben ser recogidos en tienda</p>
-                            <p class="text-sm">Calle falsa 123</p>
+                            <p class="text-sm mb-2">Los productos deben ser recogidos en tienda</p>
+                            <p class="text-sm mb-2">Calle falsa 777</p>
                         @else
-                            <p class="text-sm">Los productos Serán enviados a:</p>
-                            <p class="text-sm">{{ $envio->address }}</p>
+                            <p class="text-sm mb-2">Los productos Serán enviados a:</p>
+                            <p class="text-sm  mb-2">{{ $envio->address }}</p>
                             <p>{{ $envio->department }} - {{ $envio->town }} - {{ $envio->street }}
                             </p>
                         @endif
@@ -26,15 +24,13 @@
                     </div>
 
                     <div>
-                        <p class="text-lg font-semibold uppercase">Datos de contacto</p>
+                        <p class="text-lg font-semibold uppercase mb-2">Datos de contacto</p>
 
-                        <p class="text-sm">Persona que recibirá el producto: {{ $invoice->contact }}</p>
-                        <p class="text-sm">Teléfono de contacto: {{ $invoice->phone }}</p>
+                        <p class="text-sm mb-2">Persona que recibirá el producto: {{ $invoice->contact }}</p>
+                        <p class="text-sm mb-1">Teléfono de contacto: {{ $invoice->phone }}</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6">
+            
                 <p class="text-xl font-semibold mb-4">Resumen</p>
 
                 <table class="table-auto w-full">
@@ -93,11 +89,11 @@
 
         <div class="order-1 lg:order-2 xl:col-span-2">
             <div class="bg-white rounded-lg shadow-lg px-6 pt-6">
-                <div class="flex justify-between items-center mb-4">
-                    <img class="h-8" src="{{ asset('img/MC_VI_DI_2-1.jpg') }}" alt="">
+                <div class="flex justify-around items-center mb-4">
+                    <x-application-mark class="block h-9 w-auto " />
                     <div class="text-gray-700">
                         <p class="text-sm font-semibold">
-                            Subtotal: {{ $invoice->total - $order->shipping_cost }} €
+                            Subtotal: {{ $invoice->total - $invoice->shipping_cost }} €
                         </p>
                         <p class="text-sm font-semibold">
                             Envío: {{ $invoice->shipping_cost }} €
@@ -125,8 +121,7 @@
         
     
 
-        <script src="https://www.paypal.com/sdk/js?client-id={{ config('services.paypal.client_id') }}">
-            // Replace YOUR_CLIENT_ID with your sandbox client ID
+        <script src="https://www.paypal.com/sdk/js?client-id={{ config('services.paypal.client_id') }}&currency=EUR">
 
         </script>
 
@@ -137,8 +132,9 @@
                     return actions.order.create({
                         purchase_units: [{
                             amount: {
-                                value: "{{ $invoice->total }}"
-                            }
+                                    value:  "20.00",
+                                    currency_code: "EUR"
+                                        }
                         }]
                     });
                 },
@@ -147,12 +143,10 @@
 
                         Livewire.emit('payInvoice');
 
-                        /* console.log(details);
-
-                        alert('Transaction completed by ' + details.payer.name.given_name); */
+                        
                     });
                 }
-            }).render('#paypal-button-container'); // Display payment options on your web page
+            }).render('#paypal-button-container'); 
 
         </script>
 

@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Platform;
-use Illuminate\Database\Eloquent\Relations\Pivot;
+use App\Models\PlatformProduct as Pivot;
 use Livewire\Component;
 
 class PlatformProduct extends Component
@@ -83,6 +83,6 @@ class PlatformProduct extends Component
     {
         $product_platforms = $this->product->platforms;
         
-        return view('livewire.admin.platform-product', compact('product_platforms'));
+        return view('livewire.admin.platform-product', ['product_platforms'=>$product_platforms]);
     }
 }

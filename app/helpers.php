@@ -2,7 +2,6 @@
 
 use App\Models\Product;
 use App\Models\Edition;
-use App\Models\Platform;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 
@@ -11,15 +10,17 @@ function quantity($product_id, $platform_id = null, $edition_id = null){
 
     if($edition_id){
         $edition = Edition::find($edition_id);
-        $quantity = $edition->platforms->find($platform_id)->pivot->quantity;
+        $quantity = $edition->platforms()->find($platform_id)->pivot->quantity;
+        
     }elseif($platform_id){
-        $quantity = $product->platforms->find($platform_id)->pivot->quantity;
+        $quantity = $product->platforms()->find($platform_id)->pivot->quantity;
     }else{
         $quantity = $product->quantity;
     }
 
     return $quantity;
 }
+
 
 function qty_added($product_id, $platform_id = null, $edition_id = null){
 
@@ -52,7 +53,7 @@ function discount($item){
 
     if ($item->options->edition_id) {
         
-        $edition = Platform::find($item->options->edition_id);
+        $edition = Edition::find($item->options->edition_id);
 
         $edition->platforms()->detach($item->options->platform_id);
 

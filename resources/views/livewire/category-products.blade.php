@@ -6,22 +6,22 @@
             
                 @foreach ($products as $product)
                     
-                    <li class="bg-white rounded-lg shadow {{ $loop->last ? '' : 'sm:mr-4' }} w-20 h-48"> <!-- Ajusta el ancho aquí -->
+                    <li class="bg-white rounded-lg shadow {{ $loop->last ? '' : 'sm:mr-4' }} w-11 h-40">
+                        <a href="{{ route('products.show', $product) }}">
                         <article>
                             <figure>
                                 <img class="h-48 w-full object-cover object-center" src="{{ Storage::url($product->images->first()->url) }}" alt="">
                             </figure>
 
-                            <div class="py-4 px-3"> <!-- Ajusta el padding aquí -->
+                            <div class="py-4 px-3">
                                 <h1 class="text-lg font-semibold">
-                                    <a href="{{ route('products.show', $product) }}">
-                                        {{Str::limit($product->name, 20)}}
-                                    </a>
+                                    {{ Str::limit($product->name, 20) }}
                                 </h1>
 
                                 <p class="font-bold text-trueGray-700"> {{$product->price}} €</p>
                             </div>
                         </article>
+                    </a>
                     </li>
 
                 @endforeach
@@ -41,3 +41,4 @@
         
     @endif
 </div>
+

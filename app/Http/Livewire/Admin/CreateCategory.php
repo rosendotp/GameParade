@@ -21,7 +21,7 @@ class CreateCategory extends Component
     protected $listeners = ['delete'];
 
     public $createForm = [
-        
+
         'name' => null,
         'slug' => null,
         'icon' => null,
@@ -61,29 +61,35 @@ class CreateCategory extends Component
         'editForm.brands' => 'marcas'
     ];
 
-    public function mount(){
+    public function mount()
+    {
         $this->getBrands();
         $this->getCategories();
         $this->rand = rand();
     }
 
-    public function updatedCreateFormName($value){
+    public function updatedCreateFormName($value)
+    {
         $this->createForm['slug'] = Str::slug($value);
     }
 
-    public function updatedEditFormName($value){
+    public function updatedEditFormName($value)
+    {
         $this->editForm['slug'] = Str::slug($value);
     }
 
-    public function getBrands(){
+    public function getBrands()
+    {
         $this->brands = Brand::all();
     }
 
-    public function getCategories(){
+    public function getCategories()
+    {
         $this->categories = Category::all();
     }
 
-    public function save(){
+    public function save()
+    {
         $this->validate();
 
         $image = $this->createForm['image']->store('categories');
@@ -104,7 +110,8 @@ class CreateCategory extends Component
         $this->emit('saved');
     }
 
-    public function edit(Category $category){
+    public function edit(Category $category)
+    {
 
         $this->reset(['editImage']);
         $this->resetValidation();
@@ -119,7 +126,8 @@ class CreateCategory extends Component
         $this->editForm['brands'] = $category->brands->pluck('id');
     }
 
-    public function update(){
+    public function update()
+    {
 
         $rules = [
             'editForm.name' => 'required',
@@ -148,8 +156,18 @@ class CreateCategory extends Component
         $this->getCategories();
     }
 
-    public function delete(Category $category){
+    public function delete(Category $category)
+    {
+        $subcategories = $category->subcategories;
+
+        foreach ($subcategories as $subcategory) {
+            $subcategory->products()->delete();
+        }
+
+        $category->subcategories()->delete();
+
         $category->delete();
+
         $this->getCategories();
     }
 

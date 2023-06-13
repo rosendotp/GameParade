@@ -31,16 +31,16 @@
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <div class="flex">
-                    <p>¿ Esta subcategoría necesita especifiquemos plataforma ?</p>
+                <div class="flex text-xs">
+                    <p>¿Esta subcategoría necesita especifiquemos plataforma ?</p>
 
-                    <div class="ml-auto">
+                    <div class="flex ml-auto">
                         <label>
                             <input type="radio" value="1" name="platform" wire:model.defer="createForm.platform">
                             Si
                         </label>
                         
-                        <label class="ml-2">
+                        <label class="ml-4">
                             <input type="radio" value="0" name="platform" wire:model.defer="createForm.platform">
                             No
                         </label>
@@ -51,16 +51,16 @@
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <div class="flex">
+                <div class="flex text-xs">
                     <p>¿ Esta subcategoría necesita especifiquemos edición ?</p>
 
-                    <div class="ml-auto">
+                    <div class="flex ml-auto">
                         <label>
                             <input type="radio" value="1" name="edition" wire:model.defer="createForm.edition">
                             Si
                         </label>
                         
-                        <label class="ml-2">
+                        <label class="ml-4">
                             <input type="radio" value="0" name="edition" wire:model.defer="createForm.edition">
                             No
                         </label>
@@ -111,9 +111,9 @@
                         <tr>
                             <td class="py-2">
 
-                                <a href="{{route('admin.categories.show', $subcategory)}}" class="uppercase">
+                                 <p class="uppercase">
                                     {{$subcategory->name}}
-                                </a>
+                                 </p>
                             </td>
                             <td class="py-2">
                                 <div class="flex divide-x divide-gray-300 font-semibold">

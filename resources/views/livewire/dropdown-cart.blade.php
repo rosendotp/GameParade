@@ -51,7 +51,7 @@
 
             @if (Cart::count())
                 <div class="py-2 px-3">
-                    <p class="text-lg text-gray-700 mt-2 mb-3"><span class="font-bold">Total:</span> {{ Cart::subtotal() }} €</p>
+                    <p class="text-lg text-gray-700 mt-2 mb-3"><span class="font-bold">Total: </span> {{ Cart::subtotal() }} €</p>
 
 
                     <x-button-enlace href="{{ route('shopping-cart') }}" color="orange" class="w-full">

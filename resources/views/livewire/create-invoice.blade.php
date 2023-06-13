@@ -29,7 +29,7 @@
             <label class="bg-white rounded-lg shadow px-6 py-4 flex items-center mb-4 cursor-pointer">
                 <input x-model="envio_type" type="radio" value="1" name="envio_type" class="text-gray-600">
                 <span class="ml-2 text-gray-700">
-                    Recojo en tienda (Calle Falsa 123)
+                    Recojo en tienda (Calle Falsa 777)
                 </span>
 
                 <span class="font-semibold text-gray-700 ml-auto">
@@ -50,11 +50,11 @@
 
                     {{-- Departamentos --}}
                     <div>
-                        <x-label value="Departamento" />
+                        <x-label value="Tienda" />
 
                         <select class="form-control w-full" wire:model="department_id">
 
-                            <option value="" disabled selected>Seleccione un Departamento</option>
+                            <option value="" disabled selected>Seleccione una tienda</option>
 
                             @foreach ($departments as $department)
                                 <option value="{{$department->id}}">{{$department->name}}</option>
@@ -78,6 +78,21 @@
                         </select>
 
                         <x-input-error for="town_id" />
+                    </div>
+                    {{-- Distritos --}}
+                    <div>
+                        <x-label value="Calle" />
+
+                        <select class="form-control w-full" wire:model="street_id">
+
+                            <option value="" disabled selected>Seleccione una calle</option>
+
+                            @foreach ($streets as $street)
+                                <option value="{{$street->id}}">{{$street->name}}</option>
+                            @endforeach
+                        </select>
+
+                        <x-input-error for="street_id" />
                     </div>
                     <div>
                         <x-label value="Dirección" />

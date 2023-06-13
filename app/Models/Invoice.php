@@ -17,7 +17,7 @@ class Invoice extends Model
     const ENTREGADO = 4;
     const ANULADO = 5;
 
-    //Relacion uno a muchos inversa
+   
     public function department(){
         return $this->belongsTo(Department::class);
     }

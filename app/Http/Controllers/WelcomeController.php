@@ -18,7 +18,7 @@ class WelcomeController extends Controller
     
                 if ($pendiente) {
     
-                    $mensaje = "Usted tiene $pendiente ordenes pendientes. <a class='font-bold' href='" . route('invoices.index') ."?status=1'>Ir a pagar</a>";
+                    $mensaje = "Usted tiene $pendiente facturas pendientes. <a class='font-bold' href='" . route('invoices.index') ."?status=1'>Ir a pagar</a>";
     
                     session()->flash('flash.banner', $mensaje);
                 }

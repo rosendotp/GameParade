@@ -109,7 +109,7 @@
                                         <div class="flex text-xs">
 
                                             @isset($item->options->platform)
-                                                Color: {{ __($item->options->platform) }}
+                                                Plataforma: {{ __($item->options->platform) }}
                                             @endisset
 
                                             @isset($item->options->edition)

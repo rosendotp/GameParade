@@ -8,7 +8,7 @@
                     d="M4 6h16M4 12h16M4 18h16" />
             </svg>
 
-            <span class="text-sm hidden md:block">Categorías</span>
+            <span class="text-sm hidden md:block">Catálogo</span>
         </a>
 
         <a href="/" class="mx-2 pt-2">
@@ -105,24 +105,20 @@
                 class="grid grid-cols-4 h-full relative">
                 <ul class="bg-white">
                     @foreach ($categories as $category)
-                        <li class="navigation-link text-Gray-500 hover:bg-orange-500 hover:text-white">
-                            <a href="{{route('categories.show', $category)}}" class="py-2 px-4 text-sm flex items-center">
-
+                        <li class="navigation-link text-gray-500 hover:bg-blue-300 hover:text-white">
+                            <a href="{{ route('categories.show', $category) }}" class="py-2 px-4 text-sm flex items-center font-roboto">
                                 <span class="flex justify-center w-9">
-                                    {!!$category->icon!!}
+                                    {!! $category->icon !!}
                                 </span>
-
-                                {{$category->name}}
+                                <span class="ml-2">{{ $category->name }}</span>
                             </a>
-
-
                             <div class="navigation-submenu bg-gray-100 absolute w-3/4 h-full top-0 right-0 hidden">
                                 <x-navigation-subcategories :category="$category" />
                             </div>
-
                         </li>
                     @endforeach
                 </ul>
+                
 
                 <div class="col-span-3 bg-gray-100">
                     <x-navigation-subcategories :category="$categories->first()" />
